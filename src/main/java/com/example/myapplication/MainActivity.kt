@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ScrollView
 import android.widget.TextView
@@ -20,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
         presenter = Presenter(findViewById(R.id.answer_view))
 
         initRecyclerView()
@@ -33,10 +36,12 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
 
         val layoutManager = LinearLayoutManager(this)
-        layoutManager.reverseLayout = true;
-        layoutManager.stackFromEnd = false;
+        layoutManager.reverseLayout = true
+        layoutManager.stackFromEnd = false
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = presenter.adapter
+        //window.decorView.systemUiVisibility  = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+        //window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LOW_PROFILE;
 
         val callback: ItemTouchHelper.Callback = SimpleItemTouchHelperCallback(presenter.adapter)
         val touchHelper = ItemTouchHelper(callback)
@@ -78,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.button9).setOnClickListener {
             addNumb(9)
         }
-        findViewById<Button>(R.id.button_backspace).setOnClickListener {
+        findViewById<View>(R.id.button_backspace).setOnClickListener {
             clearNumb()
         }
     }
@@ -96,7 +101,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun scrollToCurrentItem(index: Int) {
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
-        recyclerView.scrollToPosition(index);
+        recyclerView.scrollToPosition(index)
     }
 
     /*override fun onPostCreate(savedInstanceState: Bundle?) {

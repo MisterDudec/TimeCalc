@@ -12,8 +12,7 @@
     <color name="purple_500a">#5E00E4</color>
     <color name="grey">#EBEBEB</color>
 
-    <color name="text">@color/black</color>
-    <color name="text_selected">@color/teal_200</color>
+    <color name="text_selected">#4CAF50</color>
     <color name="item_background">@color/layout_entry_background</color>
 
 

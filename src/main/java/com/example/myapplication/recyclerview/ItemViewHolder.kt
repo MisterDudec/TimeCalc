@@ -31,7 +31,7 @@ class ItemViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!), Ite
                 R.color.text_selected
             )
         )
-        else textView.setTextColor(ContextCompat.getColor(textView.context, R.color.text))
+        else textView.setTextColor(ContextCompat.getColor(textView.context, R.color.term_text))
     }
 
     private fun switchBackground(chosenTime: Int, textView: TextView) {

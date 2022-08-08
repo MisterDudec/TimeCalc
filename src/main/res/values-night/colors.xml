@@ -11,9 +11,8 @@
     <color name="purple_500a">#5E00E4</color>
     <color name="grey">#EBEBEB</color>
 
-    <color name="text">@color/white</color>
-    <color name="text_selected">@color/teal_200</color>
-    <color name="item_background">#121212</color>
+    <color name="text_selected">#A9EEF9</color>
+    <color name="item_background">@color/layout_entry_background</color>
 
     <color name="digit_button_text">#D4E8D0</color>
     <color name="command_button_text">#D4E8D0</color>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="?listPreferredItemHeight"
     android:background="@color/item_background"
@@ -15,11 +16,11 @@
         android:layout_marginTop="16dp"
         android:background="@color/item_background"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="00:00:00"
         android:textAlignment="center"
         android:textColor="@color/term_text"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        tools:text="00:00:00"/>
 
 <!--
     <ImageView

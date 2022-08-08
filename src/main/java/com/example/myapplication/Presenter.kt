@@ -10,6 +10,7 @@ class Presenter(private val answerView: TextView) {
 
     fun viewIsReady() {
         addTime()
+        setAnswer()
     }
 
     fun addNumb(numb: Int, scrollToCurrentItem: KFunction1<Int, Unit>) {
