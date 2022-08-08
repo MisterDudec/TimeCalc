@@ -10,7 +10,7 @@ import com.example.myapplication.R
 import com.example.myapplication.TimeData
 import java.util.*
 
-class RecyclerListAdapter(val presenter: Presenter) : RecyclerView.Adapter<ItemViewHolder>(), ItemTouchHelperAdapter {
+class RecyclerListAdapter(private val presenter: Presenter) : RecyclerView.Adapter<ItemViewHolder>(), ItemTouchHelperAdapter {
     val list: ArrayList<TimeData?> = ArrayList()
     var chosenTime: Int = 0
 

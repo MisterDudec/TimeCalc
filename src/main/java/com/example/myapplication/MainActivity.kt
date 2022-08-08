@@ -46,53 +46,57 @@ class MainActivity : AppCompatActivity() {
     private fun setButtonsListeners() {
         findViewById<Button>(R.id.button_plus).setOnClickListener {
             presenter.addTime()
-            val scrollview = findViewById<NestedScrollView>(R.id.scrollView)
-            scrollview.post { scrollview.fullScroll(ScrollView.FOCUS_DOWN) }
+            scrollToCurrentItem(0)
         }
         findViewById<Button>(R.id.button0).setOnClickListener {
-            presenter.addNumb(0)
-            presenter.setAnswer()
+            addNumb(0)
         }
         findViewById<Button>(R.id.button1).setOnClickListener {
-            presenter.addNumb(1)
-            presenter.setAnswer()
+            addNumb(1)
         }
         findViewById<Button>(R.id.button2).setOnClickListener {
-            presenter.addNumb(2)
-            presenter.setAnswer()
+            addNumb(2)
         }
         findViewById<Button>(R.id.button3).setOnClickListener {
-            presenter.addNumb(3)
-            presenter.setAnswer()
+            addNumb(3)
         }
         findViewById<Button>(R.id.button4).setOnClickListener {
-            presenter.addNumb(4)
-            presenter.setAnswer()
+            addNumb(4)
         }
         findViewById<Button>(R.id.button5).setOnClickListener {
-            presenter.addNumb(5)
-            presenter.setAnswer()
+            addNumb(5)
         }
         findViewById<Button>(R.id.button6).setOnClickListener {
-            presenter.addNumb(6)
-            presenter.setAnswer()
+            addNumb(6)
         }
         findViewById<Button>(R.id.button7).setOnClickListener {
-            presenter.addNumb(7)
-            presenter.setAnswer()
+            addNumb(7)
         }
         findViewById<Button>(R.id.button8).setOnClickListener {
-            presenter.addNumb(8)
-            presenter.setAnswer()
+            addNumb(8)
         }
         findViewById<Button>(R.id.button9).setOnClickListener {
-            presenter.addNumb(9)
-            presenter.setAnswer()
+            addNumb(9)
         }
         findViewById<Button>(R.id.button_backspace).setOnClickListener {
-            presenter.clearNumb()
-            presenter.setAnswer()
+            clearNumb()
         }
+    }
+
+    private fun addNumb(numb: Int) {
+        presenter.addNumb(numb, ::scrollToCurrentItem)
+        presenter.setAnswer()
+    }
+
+    private fun clearNumb() {
+        presenter.clearNumb(::scrollToCurrentItem)
+        presenter.setAnswer()
+    }
+
+
+    private fun scrollToCurrentItem(index: Int) {
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+        recyclerView.scrollToPosition(index);
     }
 
     /*override fun onPostCreate(savedInstanceState: Bundle?) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,146 +8,135 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/layout_buttons_background">
+    <!--            -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/answer_view"
+        android:paddingTop="0dp"
+        android:background="@color/layout_entry_background"
+        tools:listitem="@layout/list_item" />
+
+    <TextView
+        android:id="@+id/answer_view"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_above="@id/layout_buttons"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:background="@drawable/entry_background"
+        tools:text="07:52"
+        android:textAlignment="center"
+        android:textSize="32sp" />
 
     <LinearLayout
+        android:id="@+id/layout_buttons"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/layout_buttons_background"
-        android:orientation="vertical">
+        android:layout_height="300dp"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:paddingTop="8dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/entry_background">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="270dp"
-                android:nestedScrollingEnabled="false"
-                android:paddingTop="0dp"
-                tools:listitem="@layout/list_item" />
-            <!--            -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button7"
+                style="@style/digit_button"
+                android:text="7" />
 
-            <TextView
-                android:id="@+id/answer_view"
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                tools:text="07:52"
-                android:textAlignment="center"
-                android:textSize="32sp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button8"
+                style="@style/digit_button"
+                android:text="8" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button9"
+                style="@style/digit_button"
+                android:text="9" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layout_buttons"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_weight="5"
-            android:orientation="vertical"
-            android:paddingTop="8dp"
-            android:paddingBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button4"
+                style="@style/digit_button"
+                android:text="4" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button7"
-                    style="@style/digit_button"
-                    android:text="7" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button5"
+                style="@style/digit_button"
+                android:text="5" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button8"
-                    style="@style/digit_button"
-                    android:text="8" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button6"
+                style="@style/digit_button"
+                android:text="6" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button9"
-                    style="@style/digit_button"
-                    android:text="9" />
+        </LinearLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button4"
-                    style="@style/digit_button"
-                    android:text="4" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button5"
-                    style="@style/digit_button"
-                    android:text="5" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button6"
-                    style="@style/digit_button"
-                    android:text="6" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button1"
-                    style="@style/digit_button"
-                    android:text="1" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button1"
+                style="@style/digit_button"
+                android:text="1" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button2"
-                    style="@style/digit_button"
-                    android:text="2" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button2"
+                style="@style/digit_button"
+                android:text="2" />
 
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button3"
-                    style="@style/digit_button"
-                    android:text="3" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button3"
+                style="@style/digit_button"
+                android:text="3" />
 
-            </LinearLayout>
+        </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_backspace"
-                    style="@style/command_button"
-                    android:text="&lt;" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_backspace"
+                style="@style/command_button"
+                android:text="&lt;" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button0"
-                    style="@style/digit_button"
-                    android:text="0" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button0"
+                style="@style/digit_button"
+                android:text="0" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_plus"
-                    style="@style/command_button"
-                    android:text="+" />
-
-            </LinearLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_plus"
+                style="@style/command_button"
+                android:text="+" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+</RelativeLayout>

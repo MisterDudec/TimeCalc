@@ -1,23 +1,27 @@
 package com.example.myapplication
 
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.recyclerview.RecyclerListAdapter
+import kotlin.reflect.KFunction1
 
-class Presenter(private val textView: TextView) {
+class Presenter(private val answerView: TextView) {
     val adapter = RecyclerListAdapter(this)
 
     fun viewIsReady() {
         addTime()
     }
 
-    fun addNumb (numb : Int) {
+    fun addNumb(numb: Int, scrollToCurrentItem: KFunction1<Int, Unit>) {
         adapter.list[adapter.chosenTime]?.addNumb(numb)
         adapter.addNumb()
+        scrollToCurrentItem(adapter.chosenTime)
     }
 
-    fun clearNumb () {
+    fun clearNumb (scrollToCurrentItem: KFunction1<Int, Unit>) {
         adapter.list[adapter.chosenTime]?.clearNumb()
         adapter.clearNumb()
+        scrollToCurrentItem(adapter.chosenTime)
     }
 
     internal fun addTime() {
@@ -37,6 +41,6 @@ class Presenter(private val textView: TextView) {
         totalSeconds %= 60
         totalHours += totalMinutes / 60
         totalMinutes %= 60
-        textView.text = TimeData.toString(totalHours, totalMinutes, totalSeconds)
+        answerView.text = TimeData.toString(totalHours, totalMinutes, totalSeconds)
     }
 }
