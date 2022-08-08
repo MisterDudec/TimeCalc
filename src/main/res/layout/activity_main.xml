@@ -6,39 +6,51 @@
     tools:context=".MainActivity"
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/layout_buttons_background">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/layout_buttons_background"
+        android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:minHeight="270dp"
-            android:nestedScrollingEnabled="false"
-            android:paddingTop="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/layout_buttons"
-            tools:listitem="@layout/list_item" />
-            <!--
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/entry_background">
 
-            -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:nestedScrollingEnabled="false"
+                android:paddingTop="0dp"
+                tools:listitem="@layout/list_item" />
+            <!--            -->
+
+            <TextView
+                android:id="@+id/answer_view"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                tools:text="07:52"
+                android:textAlignment="center"
+                android:textSize="32sp" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/layout_buttons"
             android:layout_width="match_parent"
             android:layout_height="300dp"
+            android:layout_weight="5"
             android:orientation="vertical"
+            android:paddingTop="8dp"
+            android:paddingBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent">
-
-            <TextView
-                android:id="@+id/answer_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textSize="32sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,17 +60,17 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button7"
-                    style="@style/defaultButton"
+                    style="@style/digit_button"
                     android:text="7" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button8"
-                    style="@style/defaultButton"
+                    style="@style/digit_button"
                     android:text="8" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button9"
-                    style="@style/defaultButton"
+                    style="@style/digit_button"
                     android:text="9" />
 
             </LinearLayout>
@@ -71,17 +83,17 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button4"
-                    style="@style/defaultButton"
+                    style="@style/digit_button"
                     android:text="4" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button5"
-                    style="@style/defaultButton"
+                    style="@style/digit_button"
                     android:text="5" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button6"
-                    style="@style/defaultButton"
+                    style="@style/digit_button"
                     android:text="6" />
 
             </LinearLayout>
@@ -95,18 +107,18 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button1"
-                    style="@style/defaultButton"
+                    style="@style/digit_button"
                     android:text="1" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button2"
-                    style="@style/defaultButton"
+                    style="@style/digit_button"
                     android:text="2" />
 
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button3"
-                    style="@style/defaultButton"
+                    style="@style/digit_button"
                     android:text="3" />
 
             </LinearLayout>
@@ -119,23 +131,23 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_backspace"
-                    style="@style/defaultButton"
+                    style="@style/command_button"
                     android:text="&lt;" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button0"
-                    style="@style/defaultButton"
+                    style="@style/digit_button"
                     android:text="0" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_plus"
-                    style="@style/defaultButton"
+                    style="@style/command_button"
                     android:text="+" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

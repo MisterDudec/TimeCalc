@@ -8,7 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-
     <color name="purple_500a">#5E00E4</color>
     <color name="grey">#EBEBEB</color>
 
@@ -16,15 +15,13 @@
     <color name="text_selected">@color/teal_200</color>
     <color name="item_background">#121212</color>
 
-
-
     <color name="digit_button_text">#D4E8D0</color>
     <color name="command_button_text">#D4E8D0</color>
     <color name="answer_text">#C1C9BD</color>
     <color name="term_text">#E2E3DD</color>
 
     <color name="layout_buttons_background">#1A1C19</color>
-    <color name="digits_buttons_background">#20251F</color>
-    <color name="command_buttons_background">#3A4B39</color>
+    <color name="digit_button_background">#20251F</color>
+    <color name="command_button_background">#3A4B39</color>
     <color name="layout_entry_background">#2B352A</color>
 </resources>

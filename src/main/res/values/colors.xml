@@ -14,7 +14,7 @@
 
     <color name="text">@color/black</color>
     <color name="text_selected">@color/teal_200</color>
-    <color name="item_background">@color/white</color>
+    <color name="item_background">@color/layout_entry_background</color>
 
 
     <color name="digit_button_text">#0D1D0F</color>
@@ -23,8 +23,8 @@
     <color name="term_text">#0F1F11</color>
 
     <color name="layout_buttons_background">#FBFCF6</color>
-    <color name="digits_buttons_background">#F1F4ED</color>
-    <color name="command_buttons_background">#D4E8CF</color>
-    <color name="layout_entry_background">#E0E8DD</color>
+    <color name="digit_button_background">#F1F4ED</color>
+    <color name="command_button_background">#D4E8D0</color>
+    <color name="layout_entry_background">#E0E7DC</color>
 
 </resources>
