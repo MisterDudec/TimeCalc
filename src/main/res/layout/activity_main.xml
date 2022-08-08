@@ -28,7 +28,7 @@
         <LinearLayout
             android:id="@+id/layout_buttons"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="300dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent">
 
@@ -61,11 +61,6 @@
                     style="@style/defaultButton"
                     android:text="9" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_devide"
-                    style="@style/defaultButton"
-                    android:text="/" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -88,11 +83,6 @@
                     android:id="@+id/button6"
                     style="@style/defaultButton"
                     android:text="6" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_multi"
-                    style="@style/defaultButton"
-                    android:text="x" />
 
             </LinearLayout>
 
@@ -119,11 +109,6 @@
                     style="@style/defaultButton"
                     android:text="3" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_minus"
-                    style="@style/defaultButton"
-                    android:text="-" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -133,20 +118,14 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button0"
-                    style="@style/defaultButton"
-                    android:text="0" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_comma"
-                    style="@style/defaultButton"
-                    android:text="00" />
-
-                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_backspace"
                     style="@style/defaultButton"
                     android:text="&lt;" />
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button0"
+                    style="@style/defaultButton"
+                    android:text="0" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_plus"
