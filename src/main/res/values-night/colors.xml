@@ -12,6 +12,7 @@
     <color name="grey">#EBEBEB</color>
 
     <color name="text_selected">#A9EEF9</color>
+    <color name="item_selected">#3A4B39</color>
     <color name="item_background">@color/layout_entry_background</color>
 
     <color name="digit_button_text">#D4E8D0</color>

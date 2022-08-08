@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.HapticFeedbackConstants
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -58,61 +59,53 @@ class MainActivity : AppCompatActivity() {
             presenter.addTime()
             scrollToCurrentItem(0)
             it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+            it.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_press))
         }
         findViewById<Button>(R.id.button0).setOnClickListener {
-            addNumb(0)
-            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+            addNumb(0, it)
         }
         findViewById<Button>(R.id.button1).setOnClickListener {
-            addNumb(1)
-            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+            addNumb(1, it)
         }
         findViewById<Button>(R.id.button2).setOnClickListener {
-            addNumb(2)
-            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+            addNumb(2, it)
         }
         findViewById<Button>(R.id.button3).setOnClickListener {
-            addNumb(3)
-            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+            addNumb(3, it)
         }
         findViewById<Button>(R.id.button4).setOnClickListener {
-            addNumb(4)
-            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+            addNumb(4, it)
         }
         findViewById<Button>(R.id.button5).setOnClickListener {
-            addNumb(5)
-            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+            addNumb(5, it)
         }
         findViewById<Button>(R.id.button6).setOnClickListener {
-            addNumb(6)
-            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+            addNumb(6, it)
         }
         findViewById<Button>(R.id.button7).setOnClickListener {
-            addNumb(7)
-            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+            addNumb(7, it)
         }
         findViewById<Button>(R.id.button8).setOnClickListener {
-            addNumb(8)
-            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+            addNumb(8, it)
         }
         findViewById<Button>(R.id.button9).setOnClickListener {
-            addNumb(9)
-            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+            addNumb(9, it)
         }
         findViewById<View>(R.id.button_backspace).setOnClickListener {
-            clearNumb()
-            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+            clearNumb(it)
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.Q)
-    private fun addNumb(numb: Int) {
+    private fun addNumb(numb: Int, view: View) {
+        view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+        view.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_press))
         presenter.addNumb(numb, ::scrollToCurrentItem)
         presenter.setAnswer()
     }
 
-    @RequiresApi(Build.VERSION_CODES.Q)
-    private fun clearNumb() {
+    private fun clearNumb(view: View) {
+        view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+        view.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_press))
         presenter.clearNumb(::scrollToCurrentItem)
         presenter.setAnswer()
     }

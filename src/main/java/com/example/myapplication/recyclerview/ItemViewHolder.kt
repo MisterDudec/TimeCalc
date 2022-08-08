@@ -1,7 +1,6 @@
 package com.example.myapplication.recyclerview
 
 import android.annotation.SuppressLint
-import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -11,7 +10,7 @@ import com.example.myapplication.TimeData
 
 
 class ItemViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!), ItemTouchHelperViewHolder {
-    val textView: TextView?
+    private val textView: TextView?
 
     init {
         textView = itemView?.findViewById(R.id.text)
@@ -46,10 +45,9 @@ class ItemViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!), Ite
 
     @SuppressLint("ResourceAsColor")
     override fun onItemSelected() {
-        /*val prev = textView
-        textView?.let { ContextCompat.getColor(it.context, R.color.purple_500) }
+        textView?.let { ContextCompat.getColor(it.context, R.color.item_selected) }
             ?.let { textView.setBackgroundColor(it) }
-        */
+
     }
 
     override fun onItemClear() {

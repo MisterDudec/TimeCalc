@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/text"
     android:layout_width="match_parent"
     android:layout_height="?listPreferredItemHeight"
     android:background="@color/test_entry_background"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="?selectableItemBackground">
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:gravity="center"
+    android:textColor="@color/term_text"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    tools:text="00:00"/>
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
-        android:background="@color/test_entry_background"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textAlignment="center"
-        android:textColor="@color/term_text"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        tools:text="00:00"/>
-
-</FrameLayout>
-
+    <!--    android:foreground="?selectableItemBackground"-->
 
 

@@ -5,6 +5,7 @@ import android.view.HapticFeedbackConstants
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.LayoutInflater
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.Presenter
 import com.example.myapplication.R
@@ -23,6 +24,8 @@ class RecyclerListAdapter(private val presenter: Presenter) : RecyclerView.Adapt
 
         view.setOnClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.CONTEXT_CLICK)
+            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+            it.startAnimation(AnimationUtils.loadAnimation(it.context, R.anim.button_press))
             val prev = chosenTime
             chosenTime = itemViewHolder.adapterPosition
             notifyItemChanged(prev)
