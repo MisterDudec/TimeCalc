@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="?listPreferredItemHeight"
-    android:background="@color/item_background"
+    android:background="@color/test_entry_background"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?selectableItemBackground">
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="16dp"
-        android:background="@color/item_background"
+        android:background="@color/test_entry_background"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textAlignment="center"
         android:textColor="@color/term_text"
