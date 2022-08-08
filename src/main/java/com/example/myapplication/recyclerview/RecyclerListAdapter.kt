@@ -1,6 +1,7 @@
 package com.example.myapplication.recyclerview
 
 import android.util.Log
+import android.view.HapticFeedbackConstants
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.LayoutInflater
@@ -14,18 +15,18 @@ class RecyclerListAdapter(private val presenter: Presenter) : RecyclerView.Adapt
     val list: ArrayList<TimeData?> = ArrayList()
     var chosenTime: Int = 0
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
 
         val itemViewHolder = ItemViewHolder(view)
 
-        view.setOnClickListener { view ->
-            Log.d("onClick", "position = ${itemViewHolder.adapterPosition}")
+        view.setOnClickListener {
+            it.performHapticFeedback(HapticFeedbackConstants.CONTEXT_CLICK)
             val prev = chosenTime
             chosenTime = itemViewHolder.adapterPosition
             notifyItemChanged(prev)
             notifyItemChanged(chosenTime)
-            Log.d("onClick", "prev $prev : chosenTime $chosenTime")
         }
 
         return itemViewHolder

@@ -1,12 +1,12 @@
 package com.example.myapplication
 
+import android.os.Build
 import android.os.Bundle
+import android.view.HapticFeedbackConstants
 import android.view.View
 import android.widget.Button
-import android.widget.ScrollView
-import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var presenter: Presenter
 
     //val asd : Time;
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -38,8 +39,11 @@ class MainActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         layoutManager.reverseLayout = true
         layoutManager.stackFromEnd = false
+        layoutManager.isAutoMeasureEnabled = false
         recyclerView.layoutManager = layoutManager
+        recyclerView.setHasFixedSize(true)
         recyclerView.adapter = presenter.adapter
+
         //window.decorView.systemUiVisibility  = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
         //window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LOW_PROFILE;
 
@@ -48,51 +52,66 @@ class MainActivity : AppCompatActivity() {
         touchHelper.attachToRecyclerView(recyclerView)
     }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     private fun setButtonsListeners() {
         findViewById<Button>(R.id.button_plus).setOnClickListener {
             presenter.addTime()
             scrollToCurrentItem(0)
+            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
         }
         findViewById<Button>(R.id.button0).setOnClickListener {
             addNumb(0)
+            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
         }
         findViewById<Button>(R.id.button1).setOnClickListener {
             addNumb(1)
+            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
         }
         findViewById<Button>(R.id.button2).setOnClickListener {
             addNumb(2)
+            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
         }
         findViewById<Button>(R.id.button3).setOnClickListener {
             addNumb(3)
+            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
         }
         findViewById<Button>(R.id.button4).setOnClickListener {
             addNumb(4)
+            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
         }
         findViewById<Button>(R.id.button5).setOnClickListener {
             addNumb(5)
+            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
         }
         findViewById<Button>(R.id.button6).setOnClickListener {
             addNumb(6)
+            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
         }
         findViewById<Button>(R.id.button7).setOnClickListener {
             addNumb(7)
+            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
         }
         findViewById<Button>(R.id.button8).setOnClickListener {
             addNumb(8)
+            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
         }
         findViewById<Button>(R.id.button9).setOnClickListener {
             addNumb(9)
+            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
         }
         findViewById<View>(R.id.button_backspace).setOnClickListener {
             clearNumb()
+            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     private fun addNumb(numb: Int) {
         presenter.addNumb(numb, ::scrollToCurrentItem)
         presenter.setAnswer()
     }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     private fun clearNumb() {
         presenter.clearNumb(::scrollToCurrentItem)
         presenter.setAnswer()
