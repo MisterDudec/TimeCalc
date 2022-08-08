@@ -8,13 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-
     <color name="purple_500a">#5E00E4</color>
     <color name="grey">#EBEBEB</color>
 
-    <color name="text_selected">#4CAF50</color>
+    <color name="text_selected">#98D69A</color>
     <color name="item_background">@color/layout_entry_background</color>
-
 
     <color name="digit_button_text">#0D1D0F</color>
     <color name="command_button_text">#0F1F11</color>
@@ -26,4 +24,5 @@
     <color name="command_button_background">#D4E8D0</color>
     <color name="layout_entry_background">#E0E7DC</color>
 
+    <color name="test_entry_background">#ECEFE6</color>
 </resources>

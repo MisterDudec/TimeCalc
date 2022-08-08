@@ -23,4 +23,6 @@
     <color name="digit_button_background">#20251F</color>
     <color name="command_button_background">#3A4B39</color>
     <color name="layout_entry_background">#2B352A</color>
+
+    <color name="test_entry_background">#242B23</color>
 </resources>
