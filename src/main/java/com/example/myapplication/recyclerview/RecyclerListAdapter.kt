@@ -71,6 +71,10 @@ class RecyclerListAdapter : RecyclerView.Adapter<ItemViewHolder>(), ItemTouchHel
     }
 
     override fun onItemDismiss(position: Int) {
+        if (position == chosenTime && chosenTime == list.size - 1) {
+            chosenTime = list.size - 2
+            notifyItemChanged(chosenTime)
+        }
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, list.size)
         list.removeAt(position)
