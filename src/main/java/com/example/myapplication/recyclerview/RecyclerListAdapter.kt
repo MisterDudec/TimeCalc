@@ -65,6 +65,14 @@ class RecyclerListAdapter : RecyclerView.Adapter<ItemViewHolder>(), ItemTouchHel
             if (toPosition == chosenTime) chosenTime++
         }
         if (fromPosition == chosenTime) chosenTime = toPosition
+        if (chosenTime >= list.size) {
+            chosenTime = list.size - 1
+            notifyItemChanged(chosenTime)
+        }
+        if (chosenTime == -1) {
+            chosenTime = 0
+            notifyItemChanged(chosenTime)
+        }
         Log.d("move", "chosenTime $chosenTime now")
         notifyItemMoved(fromPosition, toPosition)
         return true

@@ -4,13 +4,17 @@
     tools:targetApi="n">
 
     <item><shape>
-        <solid android:color="@color/test_entry_background"/>
+        <solid android:color="@color/layout_entry_background"/>
         <corners android:bottomLeftRadius="42dp"   android:bottomRightRadius="42dp"/>
     </shape></item>
 
-    <item><shape>
+    <!--<item><shape>
+        <solid android:color="@color/test_entry_background"/>
+        <corners android:bottomLeftRadius="42dp"   android:bottomRightRadius="42dp"/>
+    </shape></item> -->
+
+    <!-- <item><shape>
         <solid android:color="@color/layout_entry_background"/>
         <corners android:radius="42dp"/>
-    </shape></item>
-
+    </shape></item> -->
 </layer-list>

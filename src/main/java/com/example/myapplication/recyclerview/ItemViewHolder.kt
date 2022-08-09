@@ -57,7 +57,7 @@ class ItemViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!), Ite
         else textView?.setBackgroundColor(ContextCompat.getColor(textView.context, R.color.purple_200))*/
         //textView.setBackgroundColor(colorCode)
 
-        textView?.setBackgroundColor(ContextCompat.getColor(textView.context, R.color.test_entry_background))
+        textView?.setBackgroundColor(ContextCompat.getColor(textView.context, R.color.layout_entry_background))
 
 
     }
