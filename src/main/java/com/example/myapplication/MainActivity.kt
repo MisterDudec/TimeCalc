@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.recyclerview.AdapterClickCallback
+import com.example.myapplication.recyclerview.AdapterDismissCallback
 import com.example.myapplication.recyclerview.SimpleItemTouchHelperCallback
 
 
@@ -22,8 +24,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
 
         presenter = Presenter(findViewById(R.id.answer_view))
 
@@ -37,20 +37,43 @@ class MainActivity : AppCompatActivity() {
     private fun initRecyclerView() {
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
 
-        val layoutManager = LinearLayoutManager(this)
-        layoutManager.reverseLayout = true
+        val layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, true)
         layoutManager.stackFromEnd = false
         layoutManager.isAutoMeasureEnabled = false
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = presenter.adapter
 
-        //window.decorView.systemUiVisibility  = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-        //window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LOW_PROFILE;
+        attachClickCallback()
+
+        attachDismissCallback()
+
+        recyclerView.adapter = presenter.adapter
 
         val callback: ItemTouchHelper.Callback = SimpleItemTouchHelperCallback(presenter.adapter)
         val touchHelper = ItemTouchHelper(callback)
         touchHelper.attachToRecyclerView(recyclerView)
+    }
+
+    private fun attachDismissCallback() {
+        presenter.adapter.attachDismissCallback(object : AdapterDismissCallback {
+            override fun dismissItem() {
+                presenter.setAnswer()
+            }
+        })
+    }
+
+    private fun attachClickCallback() {
+        presenter.adapter.attachClickCallback(object : AdapterClickCallback<TimeData>() {
+            override fun onItemClick(model: TimeData, view: View, position: Int) {
+                view.performHapticFeedback(HapticFeedbackConstants.CONTEXT_CLICK)
+                view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+                view.startAnimation(AnimationUtils.loadAnimation(view.context, R.anim.button_press))
+                val prev = presenter.adapter.chosenTime
+                presenter.adapter.chosenTime = position
+                presenter.adapter.notifyItemChanged(prev)
+                presenter.adapter.notifyItemChanged(presenter.adapter.chosenTime)
+            }
+        })
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)
@@ -107,9 +130,7 @@ class MainActivity : AppCompatActivity() {
         view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
         view.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_press))
         presenter.clearNumb(::scrollToCurrentItem)
-        presenter.setAnswer()
     }
-
 
     private fun scrollToCurrentItem(index: Int) {
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)

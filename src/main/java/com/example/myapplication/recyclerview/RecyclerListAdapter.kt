@@ -1,20 +1,27 @@
 package com.example.myapplication.recyclerview
 
 import android.util.Log
-import android.view.HapticFeedbackConstants
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.LayoutInflater
-import android.view.animation.AnimationUtils
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.Presenter
 import com.example.myapplication.R
 import com.example.myapplication.TimeData
 import java.util.*
 
-class RecyclerListAdapter(private val presenter: Presenter) : RecyclerView.Adapter<ItemViewHolder>(), ItemTouchHelperAdapter {
+class RecyclerListAdapter : RecyclerView.Adapter<ItemViewHolder>(), ItemTouchHelperAdapter {
     val list: ArrayList<TimeData?> = ArrayList()
+    protected var clickCallback: AdapterClickCallback<TimeData>? = null
+    protected var dismissCallback: AdapterDismissCallback? = null
     var chosenTime: Int = 0
+
+    fun attachClickCallback(clickCallback: AdapterClickCallback<TimeData>) {
+        this.clickCallback = clickCallback
+    }
+
+    fun attachDismissCallback(dismissCallback: AdapterDismissCallback) {
+        this.dismissCallback = dismissCallback
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -22,14 +29,9 @@ class RecyclerListAdapter(private val presenter: Presenter) : RecyclerView.Adapt
 
         val itemViewHolder = ItemViewHolder(view)
 
-        view.setOnClickListener {
-            it.performHapticFeedback(HapticFeedbackConstants.CONTEXT_CLICK)
-            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
-            it.startAnimation(AnimationUtils.loadAnimation(it.context, R.anim.button_press))
-            val prev = chosenTime
-            chosenTime = itemViewHolder.adapterPosition
-            notifyItemChanged(prev)
-            notifyItemChanged(chosenTime)
+        itemViewHolder.itemView.setOnClickListener {
+            list[itemViewHolder.adapterPosition]?.let { it1 ->
+                clickCallback?.onItemClick(it1, itemViewHolder.itemView, itemViewHolder.adapterPosition) }
         }
 
         return itemViewHolder
@@ -72,7 +74,7 @@ class RecyclerListAdapter(private val presenter: Presenter) : RecyclerView.Adapt
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, list.size)
         list.removeAt(position)
-        presenter.setAnswer()
+        dismissCallback?.dismissItem()
     }
 
     fun addItem(time: TimeData) {
@@ -82,14 +84,6 @@ class RecyclerListAdapter(private val presenter: Presenter) : RecyclerView.Adapt
         notifyItemChanged(prev)
         notifyItemInserted(0)
     }
-
-    /*fun addItem(time: TimeData) {
-        list.add(time)
-        val prev = chosenTime
-        chosenTime = list.size - 1
-        notifyItemChanged(prev)
-        notifyItemInserted(list.size - 1)
-    }*/
 
     fun addNumb() {
         notifyItemChanged(chosenTime)

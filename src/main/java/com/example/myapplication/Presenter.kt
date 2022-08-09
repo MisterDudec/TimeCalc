@@ -6,7 +6,7 @@ import com.example.myapplication.recyclerview.RecyclerListAdapter
 import kotlin.reflect.KFunction1
 
 class Presenter(private val answerView: TextView) {
-    val adapter = RecyclerListAdapter(this)
+    val adapter = RecyclerListAdapter()
 
     fun viewIsReady() {
         addTime()
@@ -16,12 +16,14 @@ class Presenter(private val answerView: TextView) {
     fun addNumb(numb: Int, scrollToCurrentItem: KFunction1<Int, Unit>) {
         adapter.list[adapter.chosenTime]?.addNumb(numb)
         adapter.addNumb()
+        setAnswer()
         scrollToCurrentItem(adapter.chosenTime)
     }
 
     fun clearNumb (scrollToCurrentItem: KFunction1<Int, Unit>) {
         adapter.list[adapter.chosenTime]?.clearNumb()
         adapter.clearNumb()
+        setAnswer()
         scrollToCurrentItem(adapter.chosenTime)
     }
 
