@@ -6,6 +6,7 @@ import android.view.HapticFeedbackConstants
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -25,13 +26,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        presenter = Presenter(findViewById(R.id.answer_view))
+        presenter = Presenter()
 
         initRecyclerView()
 
         setButtonsListeners()
 
-        presenter.viewIsReady()
+        presenter.viewIsReady(::setAnswer)
     }
 
     private fun initRecyclerView() {
@@ -57,7 +58,7 @@ class MainActivity : AppCompatActivity() {
     private fun attachDismissCallback() {
         presenter.adapter.attachDismissCallback(object : AdapterDismissCallback {
             override fun dismissItem() {
-                presenter.setAnswer()
+                presenter.setAnswer(::setAnswer)
             }
         })
     }
@@ -121,15 +122,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun addNumb(numb: Int, view: View) {
         view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
-        view.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_press))
-        presenter.addNumb(numb, ::scrollToCurrentItem)
-        presenter.setAnswer()
+        view.startAnimation(AnimationUtils.loadAnimation(this, android.R.anim.fade_in))
+        presenter.addNumb(numb, ::scrollToCurrentItem, ::setAnswer)
     }
 
     private fun clearNumb(view: View) {
         view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
         view.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_press))
-        presenter.clearNumb(::scrollToCurrentItem)
+        presenter.clearNumb(::scrollToCurrentItem, ::setAnswer)
     }
 
     private fun scrollToCurrentItem(index: Int) {
@@ -137,10 +137,8 @@ class MainActivity : AppCompatActivity() {
         recyclerView.scrollToPosition(index)
     }
 
-    /*override fun onPostCreate(savedInstanceState: Bundle?) {
-        super.onPostCreate(savedInstanceState)
-        val scrollview = findViewById<NestedScrollView>(R.id.scrollView)
-        scrollview.post { scrollview.fullScroll(ScrollView.FOCUS_DOWN) }
-    }*/
+    private fun setAnswer(totalHours: Int, totalMinutes: Int, totalSeconds: Int) {
+        findViewById<TextView>(R.id.answer_view).text = TimeData.toString(totalHours, totalMinutes, totalSeconds)
+    }
 
 }

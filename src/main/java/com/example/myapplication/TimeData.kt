@@ -16,23 +16,12 @@ class TimeData {
     val seconds: Int
         get() = (array[1].toString() + array[0].toString()).toInt()
 
-    /*
-    val hours: Int
-        get() = (array[0].toString() + array[1].toString()).toInt()
-
-    val minutes: Int
-        get() = (array[2].toString() + array[3].toString()).toInt()
-
-    val seconds: Int
-        get() = (array[4].toString() + array[5].toString()).toInt()
-    */
-
     fun addNumb(numb: Int) {
         if (index == 0) {
             array[index] = numb
             index++
         }
-        else if (index < array.size && index < 6) {
+        else if (index < array.size - 1) {
             var i = index
             while (i > 0) {
                 array[i] = array[i - 1]

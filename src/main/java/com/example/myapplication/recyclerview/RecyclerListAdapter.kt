@@ -85,11 +85,13 @@ class RecyclerListAdapter : RecyclerView.Adapter<ItemViewHolder>(), ItemTouchHel
         notifyItemInserted(0)
     }
 
-    fun addNumb() {
+    fun addNumb(numb: Int) {
+        list[chosenTime]?.addNumb(numb)
         notifyItemChanged(chosenTime)
     }
 
     fun clearNumb() {
+        list[chosenTime]?.clearNumb()
         notifyItemChanged(chosenTime)
     }
 }

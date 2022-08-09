@@ -1,29 +1,28 @@
 package com.example.myapplication
 
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.recyclerview.RecyclerListAdapter
 import kotlin.reflect.KFunction1
 
-class Presenter(private val answerView: TextView) {
+class Presenter {
     val adapter = RecyclerListAdapter()
 
-    fun viewIsReady() {
+    fun viewIsReady(kFunction3: (totalHours: Int, totalMinutes: Int, totalSeconds: Int) -> Unit) {
         addTime()
-        setAnswer()
+        setAnswer(kFunction3)
     }
 
-    fun addNumb(numb: Int, scrollToCurrentItem: KFunction1<Int, Unit>) {
-        adapter.list[adapter.chosenTime]?.addNumb(numb)
-        adapter.addNumb()
-        setAnswer()
+    fun addNumb(numb: Int, scrollToCurrentItem: KFunction1<Int, Unit>,
+        kFunction3: (totalHours: Int, totalMinutes: Int, totalSeconds: Int) -> Unit) {
+        adapter.addNumb(numb)
+        setAnswer(kFunction3)
         scrollToCurrentItem(adapter.chosenTime)
     }
 
-    fun clearNumb (scrollToCurrentItem: KFunction1<Int, Unit>) {
-        adapter.list[adapter.chosenTime]?.clearNumb()
+    fun clearNumb (scrollToCurrentItem: KFunction1<Int, Unit>,
+        kFunction3: (totalHours: Int, totalMinutes: Int, totalSeconds: Int) -> Unit) {
         adapter.clearNumb()
-        setAnswer()
+        setAnswer(kFunction3)
         scrollToCurrentItem(adapter.chosenTime)
     }
 
@@ -31,7 +30,7 @@ class Presenter(private val answerView: TextView) {
         adapter.addItem(TimeData())
     }
 
-    fun setAnswer() {
+    fun setAnswer(kFunction3: (totalHours: Int, totalMinutes: Int, totalSeconds: Int) -> Unit) {
         var totalSeconds = 0
         var totalMinutes = 0
         var totalHours = 0
@@ -44,6 +43,6 @@ class Presenter(private val answerView: TextView) {
         totalSeconds %= 60
         totalHours += totalMinutes / 60
         totalMinutes %= 60
-        answerView.text = TimeData.toString(totalHours, totalMinutes, totalSeconds)
+        kFunction3(totalHours, totalMinutes, totalSeconds)
     }
 }
